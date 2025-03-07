@@ -7,6 +7,7 @@ REST API для реализации Least Recently Used (LRU) cache с подд
 - DELETE /cache/{key} удаление значение по ключу
 - GET /cache/stats получение статистики cache (количество элементов, максимальный размер, список ключей)
 
+Реализовано middleware для логирования времени выполнения запросов к API
 
 Емкость LRU cache задает через переменную окружения: APP_CAPACITY_CACHE
 
