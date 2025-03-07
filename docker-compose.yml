@@ -4,8 +4,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    env_file: 
-      - .env
+    environment:
+      APP_CAPACITY_CACHE: 10
     restart: unless-stopped
     ports:
       - "8000:8000"
