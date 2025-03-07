@@ -15,12 +15,12 @@ class LRUCache:
     async def get(self, key: str) -> str | None:
         async with self.lock:
             if key not in self.cache:
-                return
+                return False
 
             value, ttl = self.cache[key]
             if ttl and time.time() > ttl:
                 del self.cache[key]
-                return
+                return False
 
             self.cache.move_to_end(key, last=False)
             return value

@@ -21,7 +21,7 @@ async def get_value_from_cache(key: str):
 
     value = await CACHE.get(key)
 
-    if value is not None:
+    if value is not False:
         return value
 
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Key not found")
