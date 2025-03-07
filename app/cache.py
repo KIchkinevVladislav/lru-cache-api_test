@@ -20,7 +20,6 @@ class LRUCache:
             value, ttl = self.cache[key]
             if ttl and time.time() > ttl:
                 del self.cache[key]
-                print(f"Key {key} has expired.")
                 return
 
             self.cache.move_to_end(key, last=False)
