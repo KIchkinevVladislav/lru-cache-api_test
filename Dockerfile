@@ -3,16 +3,11 @@ FROM $BASE_IMAGE
 
 WORKDIR /lru-cache-api
 
-RUN apt-get -y update && \
-    apt-get install -y --no-install-recommends \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+RUN pip install --no-cache-dir poetry
 
-COPY requirements.txt .
+COPY pyproject.toml poetry.lock .
 
-RUN pip install --no-cache-dir --upgrade pip
-
-RUN pip install --no-cache-dir --prefer-binary -r requirements.txt
+RUN poetry config virtualenvs.create false && poetry install --only main --no-root
 
 COPY . .
 
